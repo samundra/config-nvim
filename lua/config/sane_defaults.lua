@@ -10,3 +10,5 @@ vim.opt.shiftwidth=2
 vim.opt.expandtab=false
 vim.opt.showmode = false
 vim.opt.shortmess:append { c = true }
+vim.opt.signcolumn = 'yes'
+

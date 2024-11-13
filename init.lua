@@ -1,36 +1,11 @@
 require("config.lazy")
+require('config.sane_defaults')
 require("config.keymaps")
 require('lualine').setup({
     --options = { theme  = "onedark" },
 })
 require('fzf-lua').setup({'fzf-vim'})
---require("lazy").setup({})
-
-require('config.sane_defaults')
 require('nvim-web-devicons')
-
--- Configure Rust Analyzer
--- local lspconfig = require('lspconfig')
--- -- local on_attach = function(client)
--- --   require'completion'.on_attach(client)
--- -- end
--- -- Enable some servers
--- local servers = { 'rust_analyzer' }
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
---
--- for _, lsp in ipairs(servers) do
---   lspconfig[lsp].setup {
---     -- on_attach = my_custom_on_attach,
---     capabilities = capabilities,
---   }
--- end
-
-
---require('cmp').setup({})
-
-
--- Init FZF
-vim.keymap.set("n", "<c-P>", require('fzf-lua').files, { desc = "Fzf Files" })
 
 require'nvim-treesitter.configs'.setup {
   -- A directory to install the parsers into.
@@ -69,12 +44,6 @@ require'nvim-treesitter.configs'.setup {
 --vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme catppuccin]])
 
---- setup for the LSP
----
--- Reserve a space in the gutter
--- This will avoid an annoying layout shift in the screen
-vim.opt.signcolumn = 'yes'
-
 -- Add cmp_nvim_lsp capabilities settings to lspconfig
 -- This should be executed before you configure any language server
 local lspconfig_defaults = require('lspconfig').util.default_config
@@ -99,7 +68,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    vim.keymap.set({'n', 'x'}, 'g=', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end,
 })
@@ -152,7 +121,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
--- Run format on command press
+-- Run format on command press (gq)
 local allow_format = function(servers)
   return function(client) return vim.tbl_contains(servers, client.name) end
 end
@@ -171,7 +140,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
---
+-- Show diagnostic symbol on gutter
 
 vim.diagnostic.config({
   signs = {
