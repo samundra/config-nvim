@@ -26,53 +26,10 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     { import = "plugins" },
-    {
-      "folke/tokyonight.nvim",
-      lazy = false,
-      priority = 1000,
-      config = function()
-	-- load the colorscheme here
-	vim.cmd([[colorscheme tokyonight]])
-      end,
-    },
-    {
-      "nvim-tree/nvim-web-devicons",
-      lazy = true
-    },
-    {
-      'nvim-lualine/lualine.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' }
-    },
-    {
-      "ibhagwan/fzf-lua",
-      -- optional for icon support
-      dependencies = { "nvim-tree/nvim-web-devicons" },
-      config = function()
-	-- calling `setup` is optional for customization
-	require("fzf-lua").setup({})
-      end
-    },
-    {
-      "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
-    },
-    {
-	'goolord/alpha-nvim',
-	dependencies = { 'echasnovski/mini.icons' },
-	config = function ()
-	    require'alpha'.setup(require'alpha.themes.startify'.config)
-	end
-    },
-    {
-      'neovim/nvim-lspconfig',
-    },
-    {
-      'hrsh7th/nvim-cmp',
-      dependencies = { 'hrsh7th/cmp-nvim-lsp' },
-    },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "tokyonight"} },
+  --install = { colorscheme = { "tokyonight"} },
   -- automatically check for plugin updates
   -- checker = { enabled = true },
 })
