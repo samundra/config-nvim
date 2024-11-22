@@ -193,3 +193,5 @@ require 'lspconfig'.dartls.setup {}
 
 -- Git signs
 require('gitsigns').setup()
+--lua
+vim.opt.runtimepath:append(',/usr/local/opt/fzf')
