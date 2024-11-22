@@ -1,5 +1,9 @@
 # Introduction
 
+<center>
+    <img src="https://github.com/user-attachments/assets/82e8c09e-5e76-4451-a1e8-64a9978c46b3" alt="Screenshot" width="100%" />
+</center>
+
 clone this repository in `~/.config` folder
 
 ```bash
